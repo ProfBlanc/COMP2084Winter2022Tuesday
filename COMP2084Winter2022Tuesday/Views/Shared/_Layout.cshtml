@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!--
+     
+        Razor syntax
+        Razor: including C# code in an html file
+
+        .cs: only C# code
+        .cshtml: have html code & C# code
+            at symbol => represents C# code
+    
+     -->
+
+</head>
+<body>
+	<h1>@ViewBag.Title</h1>
+	@{
+		string hello = "world";
+		/*
+		int a = 10;
+		int b = 5;
+		double c = 12.34;
+		*/
+	}
+	<h2>@hello</h2>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+			</div>
+			<div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    <li>@Html.ActionLink("Test", "Test", "Home")</li>
+                    <li>@Html.ActionLink("ViewTest", "ViewTest", "Home")</li>
+                    <li>@Html.ActionLink("Feb1", "Feb1")</li>
+                    <li>@Html.ActionLink("Schools", "Index", "Schools")</li>
+                    <li>@Html.ActionLink("Students", "Index", "Students")</li>
+
+                    <li>@Html.ActionLink("Profs", "Index", "Profs")</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                    <li>@Html.ActionLink("Semesters", "Index", "Semesters")</li>
+
+                </ul>
+			</div>
+		</div>
+	</div>
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer>
+			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+	<!--
+	@Styles.Render("~/MyStyle/Feb")
+	@Scripts.Render("~/MyScript/Feb")
+		-->
+</body>
+</html>
