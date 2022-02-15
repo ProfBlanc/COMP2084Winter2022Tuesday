@@ -18,6 +18,7 @@ namespace COMP2084Winter2022Tuesday.Models
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Professor Name")]
         public string ProfName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

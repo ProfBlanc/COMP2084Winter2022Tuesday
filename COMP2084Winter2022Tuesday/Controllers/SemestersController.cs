@@ -14,10 +14,56 @@ namespace COMP2084Winter2022Tuesday.Controllers
     {
         private DataContext db = new DataContext();
 
+
+        public ActionResult Year(int year) {
+
+            return View();
+        }
+
+        public ActionResult Term(int year, string term) {
+
+            return View();
+        }
+
         // GET: Semesters
         public ActionResult Index()
         {
-            var semesters = db.Semesters.Include(s => s.Cours).Include(s => s.Prof).Include(s => s.Student);
+            //LINQ
+            /* Language
+             * INtergrated
+             * Queries
+             * 
+             * lambda expressions to get information
+             * 
+             */
+
+            var data = new List<string> { 
+            "Ben",
+            "Benny",
+            "Blanc",
+            "Mary",
+            "Sally-Sally"
+            };
+
+            var result = data.Where(s => s.Length > 4).ToList();
+
+
+            var modelData = new List<Login> { 
+                new Login{ Username = "ben@blanc.ca", Password = "helloworld"},
+                new Login{ Username = "b@b.ca", Password = "cool"},
+                new Login{ Username = "comp2084@gc.ca", Password = "example"},
+            };
+
+            var usernamesGreaterThan3Characters = modelData
+                .Where(s => s.Username.Trim().Length > 3 & s.Password.Length > 5)
+                .Select(s => s.Username)
+                .ToList();
+
+            var semesters = db.Semesters
+                .Include(s => s.Cours)
+                .Include(s => s.Prof)
+                .Include(s => s.Student);
+
             return View(semesters.ToList());
         }
 
@@ -35,7 +81,13 @@ namespace COMP2084Winter2022Tuesday.Controllers
             }
             return View(semester);
         }
-
+        /*
+         * GET
+         * POST
+         * 
+         * 
+         * 
+         */
         // GET: Semesters/Create
         public ActionResult Create()
         {

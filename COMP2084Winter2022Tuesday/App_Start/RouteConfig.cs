@@ -22,10 +22,27 @@ namespace COMP2084Winter2022Tuesday
 			*/
 
 			routes.MapRoute(
+				name: "SemesterTerm",
+				url: "Semesters/{year}/{term}",
+				defaults: new { controller = "Semesters", action = "Term" },
+				constraints: new { year = @"\d{4}", term = @"winter|fall|summer|spring" }
+			);
+			routes.MapRoute(
+				name: "SemesterYear",
+				url: "Semesters/{year}",
+				defaults: new { controller = "Semesters", action = "Year" },
+				constraints: new { year = @"\d{4}"}
+			);
+			
+			routes.MapRoute(
 				name: "Default",
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
 			);
+
+
+
+
 		}
 	}
 }

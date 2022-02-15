@@ -18,7 +18,10 @@
             @Html.DisplayNameFor(model => model.Prof.ProfName)
         </th>
         <th>
+            <!--
             @Html.DisplayNameFor(model => model.Student.FirstName)
+            -->
+            Student Full Name
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Term)
@@ -29,7 +32,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Cours.CourseCode)
@@ -38,13 +42,30 @@
             @Html.DisplayFor(modelItem => item.Prof.ProfName)
         </td>
         <td>
+            <!--
             @Html.DisplayFor(modelItem => item.Student.FirstName)
+            -->
+            @{
+                var FullName = item.Student.FirstName + " " + item.Student.LastName;
+            }
+
+            @FullName
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Term)
         </td>
         <td>
+            <!--
             @Html.DisplayFor(modelItem => item.Year)
+            -->
+
+            @{ 
+
+                var YearNoDecimal = Convert.ToInt32(item.Year);
+            }
+
+            @YearNoDecimal
+
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SemesterID }) |
